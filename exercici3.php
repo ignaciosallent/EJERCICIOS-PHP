@@ -48,7 +48,7 @@ function SumarMatrius($A, $B){              //primer comprobem que les dues ting
     for ($i=0; $i < $filas; $i++) {                 //Iterem a cada fila de la matriu1, i sumem 1  a "i" per cada cop que passem    i=fila 
         $nova_fila = array();
         for ($j=0; $j < $columnas; $j++){           //Iterem a cada columna de la matriu1, i sumem 1 a "j" per cada cop que passem  j=columna
-            $nou_valor = $A[i][j] + $B[i][j];        //Llavors hem de sumar matriu1[i][j] + matriu2[i][j] --> I ho fiquem a un nou valor
+            $nou_valor = $A[$i][$j] + $B[$i][$j];        //Llavors hem de sumar matriu1[i][j] + matriu2[i][j] --> I ho fiquem a un nou valor
             $nova_fila[] = $nou_valor;              // Cada vegada que iterem un nou valor, creem una nova fila
         }
         $matriz3[] = $nova_fila;                    //I cada vegada que iterem noves files, fem la nova matriu!
@@ -75,19 +75,6 @@ function mostrarMatriz($matriz, $nom) {
     echo '</div>';
 }
 
-
-
-$matriz1 = crearMatriz(3);                       //GENEREM LA MATRIU-1
-$matriz2 = crearMatriz(3);                       //GENEREM LA MATRIU-2
-$matriz3 = SumarMatrius($matriz1, $matriz2);     //GENEREM LA MATRIU-3
-
-mostrarMatriz($matriz1, "MATRIU-1");                         //MOSTREM LA MATRIU-1
-mostrarMatriz($matriz2, "MATRIU-2");                         //MOSTREM LA MATRIU-2
-
-echo '<div style="float: left; margin-top: 55px; margin-right: 20px;">+</div>';     //Imprimim el símbol "+" al centre de les dues martius
-
-mostrarMatriz($matriz3, "MATRIU-3");                         //MOSTREM LA MATRIU-3
-
 // FUNCIÓ PER MULTIPLICAR MATRIUS
 function MultiplicarMatrius($A, $B){
     $filas = count($A);                      //comptem files de la matriu1
@@ -103,18 +90,43 @@ function MultiplicarMatrius($A, $B){
     for ($i=0; $i < $filas; $i++) {                 //Iterem a cada fila de la matriu1, i sumem 1  a "i" per cada cop que passem    i=fila 
         $nova_fila = array();
         for ($j=0; $j < $columnas; $j++){           //Iterem a cada columna de la matriu1, i sumem 1 a "j" per cada cop que passem  j=columna
-            $nou_valor = $A[i][j] * $B[i][j];        //Llavors hem de multiplicar matriu1[i][j] * matriu2[i][j] --> I ho fiquem a un nou valor
+            $nou_valor = $A[$i][$j] * $B[$i][$j];        //Llavors hem de multiplicar matriu1[i][j] * matriu2[i][j] --> I ho fiquem a un nou valor
             $nova_fila[] = $nou_valor;              // Cada vegada que iterem un nou valor, creem una nova fila
         }
         $matriz4[] = $nova_fila;                    //I cada vegada que iterem noves files, fem la nova matriu!
     }
     return $matriz4;
 };
+
+//----------------------------- ESPAI D'EXECUCIÓ DEL CODI --------------------------------------
+$matriz1 = crearMatriz(3);                       //GENEREM LA MATRIU-1
+$matriz2 = crearMatriz(3);                       //GENEREM LA MATRIU-2
+$matriz3 = SumarMatrius($matriz1, $matriz2);     //GENEREM LA MATRIU-3
+
+mostrarMatriz($matriz1, "MATRIU-1");                                                //MOSTREM LA MATRIU-1
+
+echo '<div style="float: left; margin-top: 55px; margin-right: 20px;">+</div>';     //Imprimim el símbol "+" al centre de les dues matrius
+
+mostrarMatriz($matriz2, "MATRIU-2");                                                //MOSTREM LA MATRIU-2
+
+echo '<div style="float: left; margin-top: 55px; margin-right: 20px;">=</div>';     //Imprimim el símbol "=" al final
+
+mostrarMatriz($matriz3, "MATRIU-3");                                                //MOSTREM LA MATRIU-3
+
 echo "\n";
-echo "\n";
+echo "\n";                                                                          //REPETIM UNES LINIES A SOTA PERO AMB LA MULTIPLICACIO:
 echo "\n";
 
-MultiplicarMatrius($matriz1, $matriz2);
-mostrarMatriz($matriz4);
+mostrarMatriz($matriz1, "MATRIU-1");                                                //MOSTREM LA MATRIU-1
+
+echo '<div style="float: left; margin-top: 55px; margin-right: 20px;">*</div>';     //Imprimim el símbol "*" al centre de les dues martius
+
+mostrarMatriz($matriz2, "MATRIU-2");                                                //MOSTREM LA MATRIU-2
+
+echo '<div style="float: left; margin-top: 55px; margin-right: 20px;">=</div>';     //Imprimim el símbol "=" al final
+
+$matriz4 = MultiplicarMatrius($matriz1, $matriz2);                                  //GENEREM LA MATRIU 4
+echo '<div style="clear: both;"></div>';
+mostrarMatriz($matriz4, "MATRIU-4");                                                //MOSTREM LA MATRIU-4
 
 ?>
