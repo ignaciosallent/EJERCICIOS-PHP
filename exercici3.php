@@ -88,4 +88,33 @@ echo '<div style="float: left; margin-top: 55px; margin-right: 20px;">+</div>'; 
 
 mostrarMatriz($matriz3, "MATRIU-3");                         //MOSTREM LA MATRIU-3
 
+// FUNCIÓ PER MULTIPLICAR MATRIUS
+function MultiplicarMatrius($A, $B){
+    $filas = count($A);                      //comptem files de la matriu1
+    $columnas = count($A[0]);                // comptem columnes de la matriu1
+    
+    if ($filas != count($B) || $columnas != count($B[0])){              //si el nº de files o columnes de la 2a matriu és diferent al de la primera --> ERROR
+        echo "Error, les matrius no tenen les mateixes dimensions!";
+        return null;                                                       // I retornem null
+    }
+
+    $matriz4 = array();                 //creem una array buida per ficar el resultat
+
+    for ($i=0; $i < $filas; $i++) {                 //Iterem a cada fila de la matriu1, i sumem 1  a "i" per cada cop que passem    i=fila 
+        $nova_fila = array();
+        for ($j=0; $j < $columnas; $j++){           //Iterem a cada columna de la matriu1, i sumem 1 a "j" per cada cop que passem  j=columna
+            $nou_valor = $A[i][j] * $B[i][j];        //Llavors hem de multiplicar matriu1[i][j] * matriu2[i][j] --> I ho fiquem a un nou valor
+            $nova_fila[] = $nou_valor;              // Cada vegada que iterem un nou valor, creem una nova fila
+        }
+        $matriz4[] = $nova_fila;                    //I cada vegada que iterem noves files, fem la nova matriu!
+    }
+    return $matriz4;
+};
+echo "\n";
+echo "\n";
+echo "\n";
+
+MultiplicarMatrius($matriz1, $matriz2);
+mostrarMatriz($matriz4);
+
 ?>
